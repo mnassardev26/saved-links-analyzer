@@ -1,0 +1,7 @@
+node_modules
+.plasmo
+build
+*.zip
+!going-live/*.zip
+*.tsbuildinfo
+.DS_Store

@@ -1,0 +1,67 @@
+{
+  "name": "saved-links-analyzer",
+  "displayName": "Saved Links Analyzer",
+  "version": "0.1.0",
+  "description": "Local-first organizer and exporter for Facebook saved links.",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mnassardev26/saved-links-analyzer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mnassardev26/saved-links-analyzer/issues"
+  },
+  "scripts": {
+    "clean": "rm -rf build .plasmo",
+    "dev": "plasmo dev --src-path=.",
+    "build": "plasmo build --src-path=.",
+    "package": "plasmo package --src-path=.",
+    "verify": "npm run typecheck && npm test && npm run build && npm run package",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.5",
+    "@mui/material": "^7.3.5",
+    "@plasmohq/messaging": "^0.7.1",
+    "plasmo": "^0.90.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.268",
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "jsdom": "^24.1.1",
+    "typescript": "^5.5.3",
+    "vitest": "^1.6.0"
+  },
+  "manifest": {
+    "name": "Saved Links Analyzer",
+    "short_name": "Saved Analyzer",
+    "manifest_version": 3,
+    "version": "0.1.0",
+    "minimum_chrome_version": "114",
+    "action": {
+      "default_title": "Open Saved Links Analyzer"
+    },
+    "permissions": [
+      "storage",
+      "sidePanel"
+    ],
+    "host_permissions": [
+      "https://www.facebook.com/*"
+    ],
+    "side_panel": {
+      "default_path": "sidepanel.html"
+    },
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'; img-src 'self' data: blob: https://www.facebook.com https://*.fbcdn.net;"
+    }
+  },
+  "packageManager": "npm@10.8.2"
+}
